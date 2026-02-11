@@ -1,5 +1,7 @@
 from room import Room
 
+from item import Item
+
 kitchen = Room('Kitchen')
 
 kitchen.set_description("A bright, colourful room overflowing with dishes.")
@@ -22,7 +24,11 @@ ballroom.link_room(dining_room, 'east')
 
 current_room = kitchen
 
+sword = Item('Sword')
 
+sword.set_description("A sharp piece of metal with a black handle")
+
+print(sword.get_descritpion())
 
 while True:
     print("\n")
