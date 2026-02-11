@@ -24,14 +24,23 @@ ballroom.link_room(dining_room, 'east')
 
 current_room = kitchen
 
-sword = Item('Sword')
+sword = Item('sword')
 
 sword.set_description("A sharp piece of metal with a black handle")
 
-print(sword.get_descritpion())
+key = Item('key')
+
+key.set_description("An old looking key")
+
+kitchen.add_items('sword', sword)
+
+dining_room.add_items('key', key)
 
 while True:
     print("\n")
+    print('You are currently in the', current_room.name)
+    print("---------------------")
+    current_room.describe()
     current_room.get_details()
     command = input(">> ")
     current_room = current_room.move(command)

@@ -3,6 +3,7 @@ class Room():
         self.name = room_name
         self.description = None
         self.linked_rooms = {}
+        self.all_items = {}
 
     
 
@@ -23,17 +24,32 @@ class Room():
         #print(self.name, 'linked rooms :', repr(self.linked_rooms))
 
     def get_details(self):
-        print( self.description)
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             print('The ' + room.get_name() + ' is', direction)
+        for item_obj in self.all_items:
+            #item_obj = self.all_items[item_name]
+            
+            print( "There is a " + item_obj.name + ": " + item_obj.description)
 
     def move(self, direction):
         if direction in self.linked_rooms:
             return self.linked_rooms[direction]
+        elif direction in self.all_items:
+            item_obj = self.all_items[direction]
+            print(item_obj.description)
         else:
             print("You can't go that way")
             return self
+    
+    def add_items(self, item_obj, item_name):
+        self.all_items[item_name] = item_obj
+
+    def remove_item(self, item_name):
+        del self.all_items[item_name]
+        
+    
+
         
     
             
