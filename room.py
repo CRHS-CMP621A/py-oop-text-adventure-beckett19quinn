@@ -38,6 +38,7 @@ class Room():
         elif direction in self.all_items:
             item_obj = self.all_items[direction]
             print(item_obj.description)
+            return self
         else:
             print("You can't go that way")
             return self

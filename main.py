@@ -2,6 +2,16 @@ from room import Room
 
 from item import Item
 
+from character import *
+
+dave = Enemy("Dave", "A smelly zombie")
+
+dave.describe()
+
+dave.set_convo("What is up dude?")
+
+dave.talk()
+
 kitchen = Room('Kitchen')
 
 kitchen.set_description("A bright, colourful room overflowing with dishes.")
@@ -34,10 +44,13 @@ key.set_description("An old looking key")
 
 kitchen.add_items('sword', sword)
 
-dining_room.add_items('key', key)
+kitchen.add_items('key', key)
+
+
+
+
 
 while True:
-    print("\n")
     print('You are currently in the', current_room.name)
     print("---------------------")
     current_room.describe()
