@@ -4,6 +4,8 @@ from item import Item
 
 from character import *
 
+
+
 dave = Enemy("Dave", "A smelly zombie")
 
 #dave.describe()
@@ -14,31 +16,33 @@ dave.set_convo("What is up dude?")
 
 dave.set_weakness("sword")
 
+class_101 = Room("class 101")
+class_102 = Room('class 102')
+hall_west = Room('west hallway')
+hall_east = Room('east hallway')
+office = Room("office")
+cafeteria = Room('cafeteria')
+p_office = Room('principals office')
+door = Room('exit')
+
+class_101.link_room(hall_west, 'north')
+hall_west.link_room(class_101, 'south')
+hall_west.link_room(office, 'north')
+hall_west.link_room(hall_east, 'east')
+hall_east.link_room(hall_west, 'south')
+hall_east.link_room(class_102, 'south')
+hall_east.link_room(cafeteria, 'north')
+hall_east.link_room(door, 'east')
+class_102.link_room(hall_east, 'north')
+cafeteria.link_room(hall_east, 'south')
+office.link_room(hall_west, 'south')
+office.link_room(p_office, 'north')
+p_office.link_room(office, 'south')
 
 
 
 
-kitchen = Room('Kitchen')
-
-kitchen.set_description("A bright, colourful room overflowing with dishes.")
-
-dining_room = Room('Dining Room')
-
-dining_room.set_description("A grand dining room, empty with neglect.")
-
-ballroom = Room('Ballroom')
-
-ballroom.set_description("An empty room, yet haunted with a lingering spirit.")
-
-kitchen.link_room(dining_room, 'south')
-
-dining_room.link_room(kitchen,'north')
-
-dining_room.link_room(ballroom, 'west')
-
-ballroom.link_room(dining_room, 'east')
-
-current_room = kitchen
+current_room = class_101
 
 sword = Item('sword')
 
@@ -48,11 +52,7 @@ key = Item('key')
 
 key.set_description("An old looking key")
 
-kitchen.add_items('sword', sword)
 
-dining_room.add_items('key', key)
-
-ballroom.set_character(dave)
 
 
 
