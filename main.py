@@ -6,11 +6,17 @@ from character import *
 
 dave = Enemy("Dave", "A smelly zombie")
 
-dave.describe()
+#dave.describe()
 
 dave.set_convo("What is up dude?")
 
-dave.talk()
+#dave.talk()
+
+dave.set_weakness("sword")
+
+
+
+
 
 kitchen = Room('Kitchen')
 
@@ -44,9 +50,9 @@ key.set_description("An old looking key")
 
 kitchen.add_items('sword', sword)
 
-kitchen.add_items('key', key)
+dining_room.add_items('key', key)
 
-
+ballroom.set_character(dave)
 
 
 
@@ -55,5 +61,19 @@ while True:
     print("---------------------")
     current_room.describe()
     current_room.get_details()
+    inhabitant = current_room.get_character()
+    if inhabitant is not None:
+        inhabitant.describe()
+        person = 1
     command = input(">> ")
-    current_room = current_room.move(command)
+    if command in ['north','south','east','west']:
+        current_room = current_room.move(command)
+    elif command == 'fight':
+        if person == 1:
+            inhabitant.fight()
+        else:
+            print('There is no one in this room')
+    elif command == 'help':
+        print("Move command: north, east, south, west. Fight")
+
+    

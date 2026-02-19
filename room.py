@@ -4,6 +4,7 @@ class Room():
         self.description = None
         self.linked_rooms = {}
         self.all_items = {}
+        self.character = None
 
     
 
@@ -48,6 +49,15 @@ class Room():
 
     def remove_item(self, item_name):
         del self.all_items[item_name]
+
+    def get_character(self):
+        return self.character
+
+    def set_character(self, name):
+        self.character = name
+
+        
+        
         
     
 
