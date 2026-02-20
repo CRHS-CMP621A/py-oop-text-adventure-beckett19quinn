@@ -4,7 +4,7 @@ class Room():
         self.description = None
         self.linked_rooms = {}
         self.all_items = {}
-        self.character = None
+        self.character = {}
 
     
 
@@ -32,14 +32,12 @@ class Room():
             #item_obj = self.all_items[item_name]
             
             print( "There is a " + item_obj.name + ": " + item_obj.description)
+        for char in self.character:
+            print( "There is " + self.name)
 
     def move(self, direction):
         if direction in self.linked_rooms:
             return self.linked_rooms[direction]
-        elif direction in self.all_items:
-            item_obj = self.all_items[direction]
-            print(item_obj.description)
-            return self
         else:
             print("You can't go that way")
             return self
@@ -51,10 +49,12 @@ class Room():
         del self.all_items[item_name]
 
     def get_character(self):
-        return self.character
+        for i in self.character:
+            return i
 
-    def set_character(self, name):
-        self.character = name
+    def set_character(self,char, char_name ):
+        self.character[char_name] = char
+
 
         
         

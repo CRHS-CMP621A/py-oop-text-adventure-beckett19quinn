@@ -39,8 +39,8 @@ office.link_room(hall_west, 'south')
 office.link_room(p_office, 'north')
 p_office.link_room(office, 'south')
 
-
-
+bob = Character('Bob', 'A 500 pound boy, sitting infront of the office door.')
+bob.set_convo("I ain't moving unless it's for a cookie")
 
 current_room = class_101
 
@@ -68,11 +68,10 @@ while True:
     command = input(">> ")
     if command in ['north','south','east','west']:
         current_room = current_room.move(command)
-    elif command == 'fight':
-        if person == 1:
-            inhabitant.fight()
-        else:
-            print('There is no one in this room')
+    elif command == 'talk':
+        bob.talk()
+    
+        
     elif command == 'help':
         print("Move command: north, east, south, west. Fight")
 
